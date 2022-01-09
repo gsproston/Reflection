@@ -43,14 +43,6 @@ public class PlayerScript : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "StartZone")
-        {
-            isInStartZone = true;
-        }
-    }
-
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "StartZone")
