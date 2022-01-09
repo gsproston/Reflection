@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
+    float speed;
 
     bool isInStartZone;
 
@@ -15,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        speed = 4.0f;
 
         isInStartZone = true;
     }
@@ -32,15 +34,19 @@ public class PlayerScript : MonoBehaviour
         Vector2 position = rigidbody2d.position;
         if (isInStartZone)
         {
+            // can only move right while in the start zone
             horizontal = Math.Max(Math.Abs(horizontal), Math.Abs(vertical));
-            position.x = position.x + 3.0f * horizontal * Time.deltaTime;
+            position.x = position.x + speed * horizontal * Time.deltaTime;
+            rigidbody2d.MovePosition(position);
         }
         else
         {
-            position.x = position.x + 3.0f * horizontal * Time.deltaTime;
-            position.y = position.y + 3.0f * vertical * Time.deltaTime;
+            rigidbody2d.position = new Vector2(
+                rigidbody2d.position.x + speed * horizontal * Time.deltaTime, 
+                rigidbody2d.position.y);
+            //position.x = position.x + speed * horizontal * Time.deltaTime;
+            //position.y = position.y + speed * vertical * Time.deltaTime;
         }
-        rigidbody2d.MovePosition(position);
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -48,6 +54,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.tag == "StartZone")
         {
             isInStartZone = false;
+            rigidbody2d.gravityScale = 1;
         }
     }
 }

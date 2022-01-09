@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - StartZone
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 226337455
+    locked: 0
+  - name: Zones
+    uniqueID: 1800977619
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
