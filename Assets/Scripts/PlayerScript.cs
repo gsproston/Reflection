@@ -53,7 +53,6 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
         if (collision.tag == "StartZone")
         {
             isInStartZone = false;
