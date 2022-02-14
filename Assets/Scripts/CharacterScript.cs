@@ -23,7 +23,7 @@ public class CharacterScript : MonoBehaviour
     void FixedUpdate()
     {
         DateTime currentTime = DateTime.UtcNow;
-        if (currentTime.CompareTo(startTime.AddSeconds(3)) > 0)
+        if (currentTime.CompareTo(startTime.AddSeconds(1)) > 0)
         {
             Vector2 position = transform.position;
             position.x = position.x + speed * Time.deltaTime;
